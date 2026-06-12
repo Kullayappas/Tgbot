@@ -2,15 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/*.py",
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "api/capture.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
-    { "src": "/webhook", "dest": "/api/webhook.py" },
+    { "src": "/webhook", "dest": "/api/index.py" },
+    { "src": "/admin", "dest": "/api/index.py" },
+    { "src": "/admin/data", "dest": "/api/index.py" },
     { "src": "/api/capture/(.*)", "dest": "/api/capture.py" },
-    { "src": "/admin", "dest": "/api/admin.py" },
-    { "src": "/admin/(.*)", "dest": "/api/admin.py" },
-    { "src": "/(.*)", "dest": "/api/page.py" }
+    { "src": "/(.*)", "dest": "/api/index.py" }
   ]
 }
