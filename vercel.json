@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/*.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    { "src": "/webhook", "dest": "/api/webhook.py" },
+    { "src": "/api/capture/(.*)", "dest": "/api/capture.py" },
+    { "src": "/admin", "dest": "/api/admin.py" },
+    { "src": "/admin/(.*)", "dest": "/api/admin.py" },
+    { "src": "/(.*)", "dest": "/api/page.py" }
+  ]
+}
